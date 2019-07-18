@@ -1,0 +1,24 @@
+%input-rule {
+    font: $light $regular;
+    padding: $space;
+    display: inline-block;
+    position: relative;
+    border-radius: 2px;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: lighten( $black, 80% );
+    box-sizing: none;
+    color: inherit;
+    height: 42px;
+
+    @include breakpoint(xs) {
+        font: $light $medium;
+    }
+}
+
+input,
+select,
+textarea {
+    @extend %input-rule;
+}

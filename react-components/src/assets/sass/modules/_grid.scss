@@ -1,0 +1,126 @@
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+
+    > .row-flex {
+        padding-left: $space;
+        padding-right: $space;
+    }
+
+    @include breakpoint-up(md) {
+        width: $containerxs;
+    }
+
+    @include breakpoint-up(lg) {
+        width: $containersm;
+    }
+
+    @include breakpoint-up(xl) {
+        width: $containermd;
+    }
+}
+
+.row-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-right: - $space;
+    margin-left: - $space;
+
+    > * {
+        width: 100%;
+        padding-left: $space;
+        padding-right: $space;
+
+        &[class*="-12"] {
+            width: 100%;
+        }
+
+        &[class*="-11"] {
+            width: 91.66666667%;
+        }
+
+        &[class*="-10"] {
+            width: 83.33333333%;
+        }
+
+        &[class*="-9"] {
+            width: 75%;
+        }
+
+        &[class*="-8"] {
+            width: 66.66666667%;
+        }
+
+        &[class*="-7"] {
+            width: 58.33333333%;
+        }
+
+        &[class*="-6"] {
+            width: 50%;
+        }
+
+        &[class*="-5"] {
+            width: 41.66666667%;
+        }
+
+        &[class*="-4"] {
+            width: 33.33333333%;
+        }
+
+        &[class*="-3"] {
+            width: 25%;
+        }
+
+        &[class*="-2"] {
+            width: 16.66666667%;
+        }
+
+        &[class*="-1"]:not([class*="-10"]):not([class*="-11"]):not([class*="-12"]) {
+            width: 8.33333333%;
+        }
+    }
+
+    @include breakpoint(md) {
+        [class*="-lg"] {
+            width: 100%;
+        }
+    }
+
+    @include breakpoint(sm) {
+        [class*="-lg"],
+        [class*="-md"] {
+            width: 100%;
+        }
+    }
+
+    @include breakpoint(xs) {
+
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+
+        [class*="-lg"],
+        [class*="-md"],
+        [class*="-sm"] {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    @include legacy-ie(9) {
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        > * {
+            float: left;
+        }
+    }
+}

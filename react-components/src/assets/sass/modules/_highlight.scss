@@ -1,0 +1,28 @@
+[class*="bordered"] {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba( $black, 0.2);
+
+    &[class*="primary"] {
+        border-color: $blue;
+    }
+}
+
+[class*="highlight"] {
+
+    &[class*="header"] {
+        background: lighten($black, 96%);
+    }
+
+    &[class*="primary"] {
+        background: $bluelight;
+    }
+
+    &[class*="paid"] {
+        color: $green;
+    }
+
+    &[class*="rewards"] {
+        border: 1px solid $blue;
+    }
+}
