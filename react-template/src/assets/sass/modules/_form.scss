@@ -1,0 +1,146 @@
+.error {
+    border-color: $red;
+}
+
+.full-width {
+    width: 100%;
+    clear: both;
+}
+
+.three-fourths-width {
+    width: 30.6%;
+    margin-right: 4%;
+
+    &:nth-of-type(3n) {
+        margin-right: 0 !important;
+        float: right !important;
+    }
+}
+
+.half-width {
+    width: 48%;
+    margin-right: 4%;
+
+    &:nth-of-type(2n) {
+        margin-right: 0 !important;
+        float: right !important;
+    }
+}
+
+.quarter-width {
+    width: 22%;
+    margin-right: 4%;
+
+    &:last-of-type {
+        margin-right: 0 !important;
+        float: right !important;
+    }
+}
+
+.narrow-width {
+    width: 9%;
+    margin-right: 4%;
+
+    &:nth-of-type(8n) {
+        margin-right: 0 !important;
+        float: right !important;
+    }
+}
+
+.separate {
+    clear: both;
+    margin-top: 0;
+    margin-bottom: $space24;
+    padding-bottom: $space16;
+    border-bottom: 1px dotted #ededed;
+}
+
+
+[class*="form"]:not([class*="form-group"]) {
+    width: 75%;
+
+    &::after {
+        content: '';
+        display: block;
+        position: relative;
+        clear: both;;
+    }
+
+    [class*="group"] {
+        margin-bottom: $space16;
+        position: relative;
+        float: left;
+
+        &:last-child() {
+            margin-bottom: 0;
+        }
+
+        &[class*="clear"] {
+            clear: both;
+        }
+
+        &[class*="last"] {
+            margin-right: 0;
+            float: right;
+        } 
+
+        > * {
+            display: block;
+            position: relative;
+            width: 100%;
+        }
+
+        [class*="label"],
+        > label {
+            font: $normal $medium;
+            margin-bottom: $space;
+
+            input {
+                &[type="file"] {
+                    display: none;
+                }
+            }
+        }
+
+        [class*="caption"] {
+
+            &[class*="stepper"] {
+                display: inline;
+                line-height: 42px;
+                font-weight: $bold;
+                margin-left: $space;
+            }
+
+        }
+
+        [class*="input"],
+        input,
+        textarea,
+        select {
+            box-shadow: 0 0 5px 0 rgba($black, 0.1);
+
+            &[class*="-stepper"] {
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: stretch;
+                justify-content: center;
+
+                [class*="minus"],
+                [class*="plus"] {
+                    width: 42px;
+                    text-align: center;
+                    background: $linkcolor;
+                    color: $white;
+                    line-height: 42px;
+                }
+
+                [class*="counter"] {
+                    width: calc(100% - 48px);
+                    text-align: center;
+                }
+
+            }
+
+        }
+    }
+}

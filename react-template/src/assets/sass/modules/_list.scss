@@ -1,0 +1,33 @@
+[class*="list"] {
+    margin: 0;
+    display: block;
+    position: relative;
+
+    &[class*='-item-block'] {
+        list-style: none;
+        li {
+            display: block;
+        }
+    }
+
+    &[class*='-item-list'] {
+        list-style: none;
+        li {
+            display: inline-block;
+        }
+    }
+
+    &[class*='-item-bullet'] {
+        list-style-type: disc;
+        list-style-position: outside;
+        margin-left: $space16;
+
+        li {
+            display: list-item;
+            margin-bottom: $space;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+}

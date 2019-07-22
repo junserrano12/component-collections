@@ -1,0 +1,80 @@
+%button-rule {
+    font: $bold $regular;
+    padding: $space;
+    display: inline-block;
+    position: relative;
+    border-radius: 5px;
+    height: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $black;
+    box-sizing: none;
+    color: inherit;
+    text-align: center;
+    min-width: 120px;
+    cursor: pointer;
+}
+
+%button-outline-background {
+    background: $white;
+}
+
+[class*="button"] {
+    @extend %button-rule;
+
+    &[class*="login"] {
+        width: 100%;
+        justify-content: center;
+        border-radius: 2px;
+        div {
+            line-height: 1em;
+        }
+        span {
+            padding: 0;
+        }
+    }
+
+    &[class*="cancel"] {
+        border: none;
+        color: #607d8b;
+        font: $normal $medium;
+    }
+
+    &[class*="primary"],
+    &[class*="submit"]  {
+        @include gradient(#1876e0, #1565c0 );
+        // background-color: $blue;
+        border-color: #1876e0;
+        color: $white;
+        font: $bold $medium;
+    }
+
+    &[class*="secondary"] {
+        @include gradient(#e01818, #980c0c);
+        // background-color: #e01818;
+        border-color: #e01818;
+        color: $white;
+        font: $bold $medium;
+    }
+
+    &[class*="neutral"] {
+        @include gradient( #e0e0e0, #bdbdbd );
+        border: none;
+        box-shadow: 0 0 0 1px rgba($black, 0.2);
+    }
+
+    &[class*="outline"] {
+
+        &[class*="primary"] {
+            @extend %button-outline-background;
+            color: $blue;
+            border-color: $blue;
+        }
+
+        &[class*="secondary"] {
+            @extend %button-outline-background;
+            color: $red;
+            border-color: $red;
+        }
+    }
+}
