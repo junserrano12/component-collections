@@ -3,37 +3,28 @@ import {DwhCollectionsContext} from '../../context/DwhCollectionsContext';
 
 const useModal = () => {
 
-    // const [state, setState] = useContext(DwhCollectionsContext)    
-
-    let state = {
-        modal: {
-            name: '',
-            isOpen: false
-        }
-    }
+    const [state, setState] = useContext(DwhCollectionsContext)    
 
     const modalState = state.modal
 
     const openModal = (name) => {
-        console.log(name)
-        // setState( state => ({
-        //     ...state,
-        //     modal: {
-        //         name: name,
-        //         isOpen: true
-        //     }
-        // }) )
+        setState( state => ({
+            ...state,
+            modal: {
+                name: name,
+                isOpen: true
+            }
+        }) )
     }
 
     const closeModal = (event) => {
-        console.log('close')
-        // if (event) event.preventDefault()  
-        // setState( state => ({
-        //     ...state,
-        //     modal: {
-        //         isOpen: false
-        //     }
-        // }))
+        if (event) event.preventDefault()  
+        setState( state => ({
+            ...state,
+            modal: {
+                isOpen: false
+            }
+        }))
     }
 
     const stopCloseModal = (event) => {

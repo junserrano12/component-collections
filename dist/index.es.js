@@ -1,4 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
 
 var slicedToArray = function () {
   function sliceIterator(arr, i) {
@@ -59,38 +73,33 @@ var DwhCollectionsProvider = function DwhCollectionsProvider(props) {
 };
 
 var useModal = function useModal() {
-
-    // const [state, setState] = useContext(DwhCollectionsContext)    
-
-    var state = {
-        modal: {
-            name: '',
-            isOpen: false
-        }
-    };
+    var _useContext = useContext(DwhCollectionsContext),
+        _useContext2 = slicedToArray(_useContext, 2),
+        state = _useContext2[0],
+        setState = _useContext2[1];
 
     var modalState = state.modal;
 
     var openModal = function openModal(name) {
-        console.log(name);
-        // setState( state => ({
-        //     ...state,
-        //     modal: {
-        //         name: name,
-        //         isOpen: true
-        //     }
-        // }) )
+        setState(function (state) {
+            return _extends({}, state, {
+                modal: {
+                    name: name,
+                    isOpen: true
+                }
+            });
+        });
     };
 
     var closeModal = function closeModal(event) {
-        console.log('close');
-        // if (event) event.preventDefault()  
-        // setState( state => ({
-        //     ...state,
-        //     modal: {
-        //         isOpen: false
-        //     }
-        // }))
+        if (event) event.preventDefault();
+        setState(function (state) {
+            return _extends({}, state, {
+                modal: {
+                    isOpen: false
+                }
+            });
+        });
     };
 
     var stopCloseModal = function stopCloseModal(event) {
@@ -147,7 +156,7 @@ var Modal = function Modal(_ref) {
         modalState = _useModal.modalState;
 
     useEffect(function () {
-        console.log('testtest');
+        console.log('load Modal');
     }, []);
 
     if (modalState.isOpen && name === modalState.name) {

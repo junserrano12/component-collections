@@ -7,9 +7,9 @@ const Modal = ( {name, header, children} ) => {
 
     const {stopCloseModal, closeModal, modalState} = useModal()
 
-    // useEffect(() => {
-    //     console.log('testtest')
-    // }, [])
+    useEffect(() => {
+        console.log('load Modal')
+    }, [])
 
     if (modalState.isOpen && name === modalState.name) {
         return (
