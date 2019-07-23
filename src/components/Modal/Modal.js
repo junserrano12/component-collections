@@ -1,18 +1,17 @@
 import React, {useEffect} from 'react'
 import useModal from './useModal'
-import PropTypes from 'prop-types'
 
 import style from './Modal.scss'
 
 const Modal = ( {name, header, children} ) => {
 
-    const {stopCloseModal, closeModal} = useModal()
+    const {stopCloseModal, closeModal, modalState} = useModal()
 
-    // useEffect(() => {
-    //     console.log('test')
-    // }, [])
+    useEffect(() => {
+        console.log('testtest')
+    }, [])
 
-    if (false) {
+    if (modalState.isOpen && name === modalState.name) {
         return (
             <div className={style.wrapper} onClick={closeModal}>
                 <div className={style.container} onClick={stopCloseModal}>

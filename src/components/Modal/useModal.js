@@ -1,14 +1,39 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import {useContext} from 'react'
+import {DwhCollectionsContext} from '../../context/DwhCollectionsContext';
 
 const useModal = () => {
 
+    // const [state, setState] = useContext(DwhCollectionsContext)    
+
+    let state = {
+        modal: {
+            name: '',
+            isOpen: false
+        }
+    }
+
+    const modalState = state.modal
+
     const openModal = (name) => {
-        console.log('open Modal')
+        console.log(name)
+        // setState( state => ({
+        //     ...state,
+        //     modal: {
+        //         name: name,
+        //         isOpen: true
+        //     }
+        // }) )
     }
 
     const closeModal = (event) => {
-        console.log('close modal')
+        console.log('close')
+        // if (event) event.preventDefault()  
+        // setState( state => ({
+        //     ...state,
+        //     modal: {
+        //         isOpen: false
+        //     }
+        // }))
     }
 
     const stopCloseModal = (event) => {
@@ -18,7 +43,8 @@ const useModal = () => {
     return {
         openModal,
         closeModal,
-        stopCloseModal
+        stopCloseModal,
+        modalState
     }
 }
 

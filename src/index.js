@@ -1,8 +1,14 @@
+import React from 'react'
 import Modal from './components/Modal/Modal'
 import useModal from './components/Modal/useModal'
+import {DwhCollectionsProvider} from './context/DwhCollectionsContext'
 
-const DwhCollections = () => {
-  return ('test')
+const DwhCollections = (props) => {
+  return (
+    <DwhCollectionsProvider>
+      {props.children}
+    </DwhCollectionsProvider>
+  )
 }
 
 export default DwhCollections

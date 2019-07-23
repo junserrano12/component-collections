@@ -11,10 +11,10 @@ const DwhCollectionsProvider = (props) => {
   });
   
   return (
-    <DwhCollectionsProvider.Provider value={[state, setState]}>
+    <DwhCollectionsContext.Provider value={[state, setState]}>
       {props.children}
-    </DwhCollectionsProvider.Provider>
+    </DwhCollectionsContext.Provider>
   );
 }
 
-export { DwhCollectionsContext, DwhCollectionsProvider };
+export { DwhCollectionsContext, DwhCollectionsProvider }

@@ -2,17 +2,102 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-require('react');
-require('prop-types');
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var React = require('react');
+var React__default = _interopDefault(React);
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+var DwhCollectionsContext = React__default.createContext([{}, function () {}]);
+
+var DwhCollectionsProvider = function DwhCollectionsProvider(props) {
+  var _useState = React.useState({
+    modal: {
+      name: '',
+      isOpen: null
+    }
+  }),
+      _useState2 = slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  return React__default.createElement(
+    DwhCollectionsContext.Provider,
+    { value: [state, setState] },
+    props.children
+  );
+};
 
 var useModal = function useModal() {
 
+    // const [state, setState] = useContext(DwhCollectionsContext)    
+
+    var state = {
+        modal: {
+            name: '',
+            isOpen: false
+        }
+    };
+
+    var modalState = state.modal;
+
     var openModal = function openModal(name) {
-        console.log('open Modal');
+        console.log(name);
+        // setState( state => ({
+        //     ...state,
+        //     modal: {
+        //         name: name,
+        //         isOpen: true
+        //     }
+        // }) )
     };
 
     var closeModal = function closeModal(event) {
-        console.log('close modal');
+        console.log('close');
+        // if (event) event.preventDefault()  
+        // setState( state => ({
+        //     ...state,
+        //     modal: {
+        //         isOpen: false
+        //     }
+        // }))
     };
 
     var stopCloseModal = function stopCloseModal(event) {
@@ -22,7 +107,8 @@ var useModal = function useModal() {
     return {
         openModal: openModal,
         closeModal: closeModal,
-        stopCloseModal: stopCloseModal
+        stopCloseModal: stopCloseModal,
+        modalState: modalState
     };
 };
 
@@ -54,6 +140,7 @@ function styleInject(css, ref) {
 }
 
 var css = ".Modal_wrapper__3oG8l {\n  position: fixed;\n  top: 0;\n  left: 0;\n  background: rgba(0, 0, 0, 0.8);\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: center;\n  align-items: center; }\n\n.Modal_container__3vtwr {\n  background: white;\n  max-width: 623px;\n  width: 80%;\n  height: 80%;\n  border-radius: 4px;\n  overflow: hidden;\n  padding-bottom: 40px; }\n\n.Modal_header__3jVSR {\n  background: #f5f5f5;\n  padding: 16px 24px;\n  display: block;\n  position: relative;\n  height: 56px; }\n\n.Modal_content__1LnVv {\n  display: block;\n  position: relative;\n  padding: 32px 24px;\n  overflow-y: auto;\n  height: calc(100% - 56px); }\n  .Modal_content__1LnVv > *:last-child() {\n    padding-bottom: 0;\n    margin-bottom: 0; }\n";
+var style = { "wrapper": "Modal_wrapper__3oG8l", "container": "Modal_container__3vtwr", "header": "Modal_header__3jVSR", "content": "Modal_content__1LnVv" };
 styleInject(css);
 
 var Modal = function Modal(_ref) {
@@ -63,19 +150,43 @@ var Modal = function Modal(_ref) {
 
     var _useModal = useModal(),
         stopCloseModal = _useModal.stopCloseModal,
-        closeModal = _useModal.closeModal;
+        closeModal = _useModal.closeModal,
+        modalState = _useModal.modalState;
 
-    // useEffect(() => {
-    //     console.log('test')
-    // }, [])
+    React.useEffect(function () {
+        console.log('testtest');
+    }, []);
 
-    {
+    if (modalState.isOpen && name === modalState.name) {
+        return React__default.createElement(
+            'div',
+            { className: style.wrapper, onClick: closeModal },
+            React__default.createElement(
+                'div',
+                { className: style.container, onClick: stopCloseModal },
+                React__default.createElement(
+                    'div',
+                    { className: style.header },
+                    header
+                ),
+                React__default.createElement(
+                    'div',
+                    { className: style.content },
+                    children
+                )
+            )
+        );
+    } else {
         return null;
     }
 };
 
-var DwhCollections = function DwhCollections() {
-  return 'test';
+var DwhCollections = function DwhCollections(props) {
+  return React__default.createElement(
+    DwhCollectionsProvider,
+    null,
+    props.children
+  );
 };
 
 exports.default = DwhCollections;

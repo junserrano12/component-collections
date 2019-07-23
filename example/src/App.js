@@ -1,22 +1,19 @@
 import React from 'react'
-import DwhCollections, {Modal, useModal} from 'dwh-collections'
+import {Modal, useModal} from 'dwh-collections'
 
 const App = () => {
 
-  const {openModal} = useModal()
+  const {openModal, closeModal} = useModal()
 
   return (
     <div>
-      <DwhCollections text='Modern React component module' />
-
       <button onClick={() => openModal('modal1')}>Open Modal</button>
       <Modal name="modal1" header="header title">
         <p>My Modal Content</p>
-      </Modal>
-      
+        <button onClick={closeModal}>Close</button>
+      </Modal>      
     </div>
   )
 }
-
 
 export default App

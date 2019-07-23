@@ -4,7 +4,7 @@
   "description": "component collections",
   "author": "Dwh",
   "license": "MIT",
-  "repository": "Dwh/dwh-collections",
+  "repository": "https://github.com/gitname/react-gh-pages.git",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
