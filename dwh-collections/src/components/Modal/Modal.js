@@ -8,9 +8,9 @@ const Modal = ( {name, header, children} ) => {
 
     const {stopCloseModal, closeModal} = useModal()
 
-    useEffect(() => {
-        console.log('test')
-    }, [])
+    // useEffect(() => {
+    //     console.log('test')
+    // }, [])
 
     if (false) {
         return (

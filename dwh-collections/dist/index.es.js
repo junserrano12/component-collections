@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import 'react';
 import 'prop-types';
 
 var useModal = function useModal() {
@@ -61,9 +61,9 @@ var Modal = function Modal(_ref) {
         stopCloseModal = _useModal.stopCloseModal,
         closeModal = _useModal.closeModal;
 
-    useEffect(function () {
-        console.log('test');
-    }, []);
+    // useEffect(() => {
+    //     console.log('test')
+    // }, [])
 
     {
         return null;
