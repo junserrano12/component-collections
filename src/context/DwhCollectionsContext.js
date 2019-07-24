@@ -7,6 +7,9 @@ const DwhCollectionsProvider = (props) => {
       modal: {
         name: '',
         isOpen: null
+      },
+      style: {
+        modal: null
       }
   });
   

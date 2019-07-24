@@ -1,0 +1,65 @@
+$primaryfontfamily           : SFProText, BlinkMacSystemFont, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+$secondaryfontfamily         : serif;
+
+$light                       : 300;
+$normal                      : 400;
+$semibold                    : 500;
+$bold                        : 700;
+$bolder                      : 900;
+
+$xbig                        : 40px/#{48px} $primaryfontfamily;
+$big                         : 32px/#{40px} $primaryfontfamily;
+$xxlarge                     : 24px/#{32px} $primaryfontfamily;
+$xlarge                      : 20px/#{24px} $primaryfontfamily;
+$large                       : 18px/#{24px} $primaryfontfamily;
+$medium                      : 16px/#{24px} $primaryfontfamily;
+$regular                     : 14px/#{24px} $primaryfontfamily;
+$small                       : 12px/#{16px} $primaryfontfamily;
+$xsmall                      : 11px/#{16px} $primaryfontfamily;
+$xxsmall                     : 10px/#{16px} $primaryfontfamily;
+
+$space40                     : 40px;
+$space32                     : 32px;
+$space24                     : 24px;
+$space16                     : 16px;
+$space                       : 8px;
+
+$containermd                 : 1200px;
+$containersm                 : 992px;
+$containerxs                 : 748px;
+
+$linkcolor                   : #607d8b;
+
+$primarycolor                : #000000;
+$focuscolor                  : #000000;
+$numbercolor                 : #43a047;
+$warningcolor                : #f44336;
+
+/* BASE COLORS */
+$white                       : #ffffff;
+$black                       : #000000;
+
+$red                         : #f44336;
+$redlight                    : lighten(#f44336, 10%);
+$reddark                     : darken(#f44336, 10%);
+
+$green                       : #43a047;
+$greenlight                  : #43a047;
+$greendark                   : #43a047;
+
+$blue                        : #4487f4;
+$bluelight                   : #edf3fe;
+$bluedark                    : #4487f4;
+
+/* BACKGROUNDS */
+$primarybackground           : #e6e6e6;
+$primaryforeground           : #212121;
+
+$activeprimarybackground     : #fafafa;
+$activeprimaryforeground     : #212121;
+
+$secondarybackground         : #fafafa;
+$secondaryforeground         : #212121;
+
+$activesecondarybackground   : #fafafa;
+$activesecondaryforeground   : #212121;

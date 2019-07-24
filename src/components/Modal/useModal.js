@@ -4,7 +4,7 @@ import {DwhCollectionsContext} from '../../context/DwhCollectionsContext';
 const useModal = () => {
 
     const [state, setState] = useContext(DwhCollectionsContext)
-  
+
     const modalState = state.modal
 
     const openModal = (name) => {
