@@ -85,9 +85,13 @@ var useModal = function useModal() {
         state = _useContext2[0],
         setState = _useContext2[1];
 
+    console.log(state);
+
     var modalState = state.modal;
 
     var openModal = function openModal(name) {
+        console.log(name);
+        console.log(state);
         setState(function (state) {
             return _extends({}, state, {
                 modal: {
@@ -162,10 +166,6 @@ var Modal = function Modal(_ref) {
         closeModal = _useModal.closeModal,
         modalState = _useModal.modalState;
 
-    React.useEffect(function () {
-        console.log('load Modal');
-    }, []);
-
     if (modalState.isOpen && name === modalState.name) {
         return React__default.createElement(
             'div',
@@ -192,7 +192,7 @@ var Modal = function Modal(_ref) {
 
 var DwhCollections = function DwhCollections(props) {
   return React__default.createElement(
-    DwhCollectionsProvider,
+    React__default.Fragment,
     null,
     props.children
   );
@@ -201,4 +201,5 @@ var DwhCollections = function DwhCollections(props) {
 exports.default = DwhCollections;
 exports.Modal = Modal;
 exports.useModal = useModal;
+exports.DwhCollectionsProvider = DwhCollectionsProvider;
 //# sourceMappingURL=index.js.map

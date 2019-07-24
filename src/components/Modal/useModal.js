@@ -5,16 +5,20 @@ const useModal = () => {
 
     const [state, setState] = useContext(DwhCollectionsContext)    
 
+    console.log(state)
+
     const modalState = state.modal
 
     const openModal = (name) => {
+        console.log(name)
+        console.log(state)
         setState( state => ({
             ...state,
             modal: {
                 name: name,
                 isOpen: true
             }
-        }) )
+        }) );
     }
 
     const closeModal = (event) => {

@@ -1,15 +1,10 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import useModal from './useModal'
-
 import style from './Modal.scss'
 
 const Modal = ( {name, header, children} ) => {
 
     const {stopCloseModal, closeModal, modalState} = useModal()
-
-    useEffect(() => {
-        console.log('load Modal')
-    }, [])
 
     if (modalState.isOpen && name === modalState.name) {
         return (

@@ -4,16 +4,17 @@ import useModal from './components/Modal/useModal'
 import {DwhCollectionsProvider} from './context/DwhCollectionsContext'
 
 const DwhCollections = (props) => {
-  return (
-    <DwhCollectionsProvider>
-      {props.children}
-    </DwhCollectionsProvider>
-  )
+    return (
+      <React.Fragment>
+        {props.children}
+      </React.Fragment>
+    )
 }
 
 export default DwhCollections
 
 export {
   Modal,
-  useModal
+  useModal,
+  DwhCollectionsProvider
 }
