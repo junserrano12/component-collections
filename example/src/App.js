@@ -1,19 +1,31 @@
 import React from 'react'
-import {Modal, useModal, DwhCollectionsProvider} from 'dwh-collections'
+import DwhCollections, {Modal, useModal} from 'dwh-collections'
 
-const App = () => {
-
+function TestComponent() {
   const {openModal, closeModal} = useModal()
 
   return (
-      <DwhCollectionsProvider>
-        <button onClick={() => openModal('modal1')}>Open Modal</button>
+    <div>
+      <button onClick={() => openModal('modal1')}>Open Modal</button><br />
+      <button onClick={() => openModal('modal2')}>Open Modal2</button><br /> 
+      <button onClick={closeModal}>Close</button>
+      <Modal name="modal1" header="header title">
+        <p>My Modal Content</p>
         <button onClick={closeModal}>Close</button>
-        <Modal name="modal1" header="header title">
-          <p>My Modal Content</p>
-          <button onClick={closeModal}>Close</button>
+      </Modal>      
+      <Modal name="modal2" header="header title">
+        <p>My Modal Content 2</p>
+        <button onClick={closeModal}>Close</button>
         </Modal>      
-      </DwhCollectionsProvider>
+    </div>
+  )
+}
+
+const App = () => {
+  return (
+    <DwhCollections>
+      <TestComponent />
+    </DwhCollections>
   )
 }
 

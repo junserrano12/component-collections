@@ -78,13 +78,9 @@ var useModal = function useModal() {
         state = _useContext2[0],
         setState = _useContext2[1];
 
-    console.log(state);
-
     var modalState = state.modal;
 
     var openModal = function openModal(name) {
-        console.log(name);
-        console.log(state);
         setState(function (state) {
             return _extends({}, state, {
                 modal: {
@@ -100,6 +96,7 @@ var useModal = function useModal() {
         setState(function (state) {
             return _extends({}, state, {
                 modal: {
+                    name: '',
                     isOpen: false
                 }
             });
@@ -152,7 +149,9 @@ styleInject(css);
 var Modal = function Modal(_ref) {
     var name = _ref.name,
         header = _ref.header,
-        children = _ref.children;
+        children = _ref.children,
+        _ref$modalStyle = _ref.modalStyle,
+        modalStyle = _ref$modalStyle === undefined ? style : _ref$modalStyle;
 
     var _useModal = useModal(),
         stopCloseModal = _useModal.stopCloseModal,
@@ -162,18 +161,18 @@ var Modal = function Modal(_ref) {
     if (modalState.isOpen && name === modalState.name) {
         return React.createElement(
             'div',
-            { className: style.wrapper, onClick: closeModal },
+            { className: modalStyle.wrapper, onClick: closeModal },
             React.createElement(
                 'div',
-                { className: style.container, onClick: stopCloseModal },
+                { className: modalStyle.container, onClick: stopCloseModal },
                 React.createElement(
                     'div',
-                    { className: style.header },
+                    { className: modalStyle.header },
                     header
                 ),
                 React.createElement(
                     'div',
-                    { className: style.content },
+                    { className: modalStyle.content },
                     children
                 )
             )
@@ -185,12 +184,12 @@ var Modal = function Modal(_ref) {
 
 var DwhCollections = function DwhCollections(props) {
   return React.createElement(
-    React.Fragment,
+    DwhCollectionsProvider,
     null,
     props.children
   );
 };
 
 export default DwhCollections;
-export { Modal, useModal, DwhCollectionsProvider };
+export { Modal, useModal, DwhCollectionsContext, DwhCollectionsProvider };
 //# sourceMappingURL=index.es.js.map
