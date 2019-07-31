@@ -4,35 +4,31 @@ import appStyle from './App.module.css'
 import modalStyle from './modal.module.scss'
 
 function TestComponent() {
-  const {openModal, closeModal} = useModal()
-  const {customModalStyle} = useCustomStyle()
+    const {openModal, closeModal} = useModal()
+    const {customModalStyle} = useCustomStyle()
+    
+    useEffect(() => {
+        customModalStyle(modalStyle)
+    }, [])
 
-  useEffect(() => {
-    customModalStyle(modalStyle)
-  }, [])
-
-  return (
-    <div className={appStyle.App}>
-      <button onClick={() => openModal('modal1')}>Open Modal</button><br />
-      <button onClick={() => openModal('modal2')}>Open Modal2</button>
-      <Modal name="modal1">
-        <p>My Modal Content</p>
-        <button onClick={closeModal}>Close</button>
-      </Modal>      
-      <Modal name="modal2" header="header title">
-        <p>My Modal Content 2</p>
-        <button onClick={closeModal}>Close</button>
-        </Modal>      
-    </div>
-  )
+    return (
+        <div className={appStyle.App}>
+            <button onClick={() => openModal('modal1')}>Open</button>
+            <Modal name="modal1">
+                <p>My Modal Content</p>
+                <button onClick={closeModal}>Close</button>
+            </Modal>
+        </div>
+    )
 }
 
 const App = () => {
-  return (
-    <DwhCollections>
-      <TestComponent />
-    </DwhCollections>
-  )
+
+    return (
+        <DwhCollections>
+            <TestComponent />
+        </DwhCollections>
+    )
 }
 
 export default App

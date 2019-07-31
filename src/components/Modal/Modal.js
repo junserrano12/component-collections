@@ -10,7 +10,7 @@ const Modal = ( {name, header, children} ) => {
 
     let modalStyle = ( componentStyle.modal !== null ) ? componentStyle.modal : style
 
-    if (modalState.isOpen && name === modalState.name) {
+    if (modalState.isOpen === true && name === modalState.name) {
         return (
             <div className={modalStyle.wrapper} onClick={closeModal}>
                 <div className={modalStyle.container} onClick={stopCloseModal}>
@@ -19,7 +19,7 @@ const Modal = ( {name, header, children} ) => {
                         {header}
                     </div> : null }
                     <div className={modalStyle.content}>
-                        {children} 
+                        {children}
                     </div>
                 </div> 
             </div>

@@ -1,19 +1,20 @@
 import {useContext} from 'react'
-import {DwhCollectionsContext} from '../context/DwhCollectionsContext';
+import {DwhCollectionsStateContext, DwhCollectionsDispatchContext} from '../store/DwhCollectionsStore';
 
 const useCustomStyle = () => {
 
-    const [state, setState] = useContext(DwhCollectionsContext)
+    const state = useContext(DwhCollectionsStateContext)
+    const dispatch = useContext(DwhCollectionsDispatchContext)
 
-    const componentStyle = state.style
+    const componentStyle = state.customStyle
 
     const customModalStyle = ( style ) => {
-        setState( state => ({
-            ...state,
-            style: {
-                modal: style
+        dispatch({
+            type: 'CUSTOM_MODAL_STYLE',
+            payload: {
+                style: style
             }
-        }) );
+        })
     }
 
     return {

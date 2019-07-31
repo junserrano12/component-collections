@@ -1,31 +1,28 @@
 import {useContext} from 'react'
-import {DwhCollectionsContext} from '../../context/DwhCollectionsContext';
+import {DwhCollectionsStateContext, DwhCollectionsDispatchContext} from '../../store/DwhCollectionsStore';
 
 const useModal = () => {
 
-    const [state, setState] = useContext(DwhCollectionsContext)
+    const state = useContext(DwhCollectionsStateContext)
+    const dispatch = useContext(DwhCollectionsDispatchContext)
 
     const modalState = state.modal
 
     const openModal = (name) => {
-        setState( state => ({
-            ...state,
-            modal: {
-                name: name,
-                isOpen: true
+        
+        dispatch({
+            type: 'OPEN_MODAL',
+            payload: {
+                name: name
             }
-        }) );
+        })
     }
 
     const closeModal = (event) => {
         if (event) event.preventDefault()  
-        setState( state => ({
-            ...state,
-            modal: {
-                name: '',
-                isOpen: false
-            }
-        }))
+        dispatch({
+            type: 'CLOSE_MODAL'
+        })
     }
 
     const stopCloseModal = (event) => {

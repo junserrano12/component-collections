@@ -59,57 +59,98 @@ var slicedToArray = function () {
   };
 }();
 
-var DwhCollectionsContext = React__default.createContext([{}, function () {}]);
+var modalInitialState = {
+    modal: {
+        name: '',
+        isOpen: null
+    }
+};
+
+var modalActions = {
+    OPEN_MODAL: function OPEN_MODAL(state, payload) {
+        return _extends({}, state, {
+            modal: _extends({}, state.modal, {
+                name: payload.name,
+                isOpen: true
+            })
+        });
+    },
+    CLOSE_MODAL: function CLOSE_MODAL(state) {
+        return _extends({}, state, {
+            modal: _extends({}, state.modal, {
+                isOpen: false
+            })
+        });
+    }
+};
+
+var customStyleInitialState = {
+    customStyle: {
+        modal: null
+    }
+};
+
+var customStyleActions = {
+    CUSTOM_MODAL_STYLE: function CUSTOM_MODAL_STYLE(state, payload) {
+        return _extends({}, state, {
+            customStyle: _extends({}, state.customStyle, {
+                modal: payload.style
+            })
+        });
+    }
+};
+
+var DwhCollectionsStateContext = React.createContext();
+var DwhCollectionsDispatchContext = React.createContext();
+
+var initialState = _extends({}, modalInitialState, customStyleInitialState);
+
+var Actions = _extends({}, modalActions, customStyleActions);
+
+var DwhCollectionsReducer = function DwhCollectionsReducer(state, action) {
+    var act = Actions[action.type];
+    var update = act(state, action.payload);
+    return _extends({}, state, update);
+};
 
 var DwhCollectionsProvider = function DwhCollectionsProvider(props) {
-  var _useState = React.useState({
-    modal: {
-      name: '',
-      isOpen: null
-    },
-    style: {
-      modal: null
-    }
-  }),
-      _useState2 = slicedToArray(_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
+    var _useReducer = React.useReducer(DwhCollectionsReducer, initialState),
+        _useReducer2 = slicedToArray(_useReducer, 2),
+        state = _useReducer2[0],
+        dispatch = _useReducer2[1];
 
-  return React__default.createElement(
-    DwhCollectionsContext.Provider,
-    { value: [state, setState] },
-    props.children
-  );
+    return React__default.createElement(
+        DwhCollectionsDispatchContext.Provider,
+        { value: dispatch },
+        React__default.createElement(
+            DwhCollectionsStateContext.Provider,
+            { value: state },
+            props.children
+        )
+    );
 };
 
 var useModal = function useModal() {
-    var _useContext = React.useContext(DwhCollectionsContext),
-        _useContext2 = slicedToArray(_useContext, 2),
-        state = _useContext2[0],
-        setState = _useContext2[1];
+
+    var state = React.useContext(DwhCollectionsStateContext);
+    var dispatch = React.useContext(DwhCollectionsDispatchContext);
 
     var modalState = state.modal;
 
     var openModal = function openModal(name) {
-        setState(function (state) {
-            return _extends({}, state, {
-                modal: {
-                    name: name,
-                    isOpen: true
-                }
-            });
+
+        dispatch({
+            type: 'OPEN_MODAL',
+            payload: {
+                name: name
+            }
         });
     };
 
     var closeModal = function closeModal(event) {
         if (event) event.preventDefault();
-        setState(function (state) {
-            return _extends({}, state, {
-                modal: {
-                    name: '',
-                    isOpen: false
-                }
-            });
+        dispatch({
+            type: 'CLOSE_MODAL'
         });
     };
 
@@ -126,20 +167,18 @@ var useModal = function useModal() {
 };
 
 var useCustomStyle = function useCustomStyle() {
-    var _useContext = React.useContext(DwhCollectionsContext),
-        _useContext2 = slicedToArray(_useContext, 2),
-        state = _useContext2[0],
-        setState = _useContext2[1];
 
-    var componentStyle = state.style;
+    var state = React.useContext(DwhCollectionsStateContext);
+    var dispatch = React.useContext(DwhCollectionsDispatchContext);
+
+    var componentStyle = state.customStyle;
 
     var customModalStyle = function customModalStyle(style) {
-        setState(function (state) {
-            return _extends({}, state, {
-                style: {
-                    modal: style
-                }
-            });
+        dispatch({
+            type: 'CUSTOM_MODAL_STYLE',
+            payload: {
+                style: style
+            }
         });
     };
 
@@ -195,7 +234,7 @@ var Modal = function Modal(_ref) {
 
     var modalStyle = componentStyle.modal !== null ? componentStyle.modal : style;
 
-    if (modalState.isOpen && name === modalState.name) {
+    if (modalState.isOpen === true && name === modalState.name) {
         return React__default.createElement(
             'div',
             { className: modalStyle.wrapper, onClick: closeModal },
@@ -223,17 +262,15 @@ var css$1 = "/* BASE COLORS */\nhtml,\nbody {\n  margin: 0;\n  color: #000000;\n
 styleInject(css$1);
 
 var DwhCollections = function DwhCollections(props) {
-  return React__default.createElement(
-    DwhCollectionsProvider,
-    null,
-    props.children
-  );
+    return React__default.createElement(
+        DwhCollectionsProvider,
+        null,
+        props.children
+    );
 };
 
-exports.default = DwhCollections;
 exports.Modal = Modal;
 exports.useModal = useModal;
 exports.useCustomStyle = useCustomStyle;
-exports.DwhCollectionsContext = DwhCollectionsContext;
-exports.DwhCollectionsProvider = DwhCollectionsProvider;
+exports.default = DwhCollections;
 //# sourceMappingURL=index.js.map
