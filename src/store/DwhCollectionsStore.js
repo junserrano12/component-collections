@@ -1,9 +1,9 @@
-import React, {createContext, useReducer} from 'react';
+import React, {createContext, useReducer} from 'react'
 import {modalInitialState, modalActions} from './components/modal'
 import {customStyleInitialState, customStyleActions} from './components/useCustomStyle'
 
-const DwhCollectionsStateContext = createContext();
-const DwhCollectionsDispatchContext = createContext();
+const DwhCollectionsStateContext = createContext()
+const DwhCollectionsDispatchContext = createContext()
 
 const initialState = {
     ...modalInitialState,
@@ -30,7 +30,7 @@ const DwhCollectionsProvider = (props) => {
                 {props.children}
             </DwhCollectionsStateContext.Provider>
         </DwhCollectionsDispatchContext.Provider>
-    );
+    )
 }
 
 export { DwhCollectionsDispatchContext, DwhCollectionsStateContext, DwhCollectionsProvider }

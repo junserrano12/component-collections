@@ -1,6 +1,7 @@
 const customStyleInitialState = {
     customStyle: {
-        modal: null
+        modal: null,
+        lists: null
     }
 }
 
@@ -11,6 +12,15 @@ const customStyleActions = {
             customStyle: {
                 ...state.customStyle,
                 modal: payload.style
+            }
+        }
+    },
+    CUSTOM_LISTS_STYLE: (state, payload) => {
+        return {
+            ...state,
+            customStyle: {
+                ...state.customStyle,
+                lists: payload.style
             }
         }
     }

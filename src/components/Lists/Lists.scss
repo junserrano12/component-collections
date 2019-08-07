@@ -1,0 +1,20 @@
+.container {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;    
+
+    &[class*="bullet"] {
+        list-style: disc outside;
+        margin-left: 24px;
+    }    
+    
+    &[class*="default"] {
+        list-style: none;
+    }
+    
+}
+
+.content {
+    position: relative;
+}

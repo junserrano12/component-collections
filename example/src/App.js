@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react'
-import DwhCollections, {Modal, useModal, useCustomStyle} from 'dwh-collections'
+import DwhCollections, {Lists, List, Modal, useModal, useCustomStyle} from 'dwh-collections'
 import appStyle from './App.module.css'
 import modalStyle from './modal.module.scss'
 
-function TestComponent() {
+const ModalComponent = () => {
     const {openModal, closeModal} = useModal()
     const {customModalStyle} = useCustomStyle()
     
     useEffect(() => {
         customModalStyle(modalStyle)
-    }, [])
+    }, [customModalStyle])
 
     return (
         <div className={appStyle.App}>
@@ -22,11 +22,33 @@ function TestComponent() {
     )
 }
 
+const ListComponent = () => {
+    let rooms = [
+                    {id: '001', name: 'Deluxe', price: 1999},
+                    {id: '002', name: 'Twin', price: 2999},
+                    {id: '003', name: 'Primier', price: 3999},
+                    {id: '004', name: 'Master', price: 4999}
+                ]
+
+    return (
+        <div className="list-container">
+            <Lists type="bullet">
+                {rooms.map(room => (
+                    <List key={room.id}>
+                        <p>{room.name} - <span>{room.price}</span></p>
+                    </List>
+                ))}
+            </Lists>  
+        </div>
+    )
+}
+
 const App = () => {
 
     return (
         <DwhCollections>
-            <TestComponent />
+            <ListComponent />
+            <ModalComponent />
         </DwhCollections>
     )
 }

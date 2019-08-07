@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Component Should have class="content foo bar" if props.classes is set ["foo", "bar"] 1`] = `
+<li
+  className="undefined foo bar"
+>
+  Content
+</li>
+`;
+
+exports[`List Component Should render li tag and its children 1`] = `
+<li
+  className="undefined"
+>
+  Content
+</li>
+`;
+
+exports[`Lists component Should have a class="container bullet" if props.type is set "bullet" 1`] = `
+<ul
+  className="undefined bullet"
+>
+  <List
+    key=".$001"
+  >
+    content 1
+  </List>
+</ul>
+`;
+
+exports[`Lists component Should have class="container default foo bar" if props.classes is set ["foo", "bar"] 1`] = `
+<ul
+  className="undefined default foo bar"
+>
+  <List
+    key=".$001"
+  >
+    content 1
+  </List>
+</ul>
+`;
+
+exports[`Lists component Should not render other components except for List component 1`] = `
+<ul
+  className="undefined default"
+>
+  <List
+    key=".$001"
+  >
+    content 1
+  </List>
+  <List
+    key=".$002"
+  >
+    content 2
+  </List>
+</ul>
+`;
+
+exports[`Lists component Should render ul tag and its children 1`] = `
+<ul
+  className="undefined default"
+>
+  <List
+    key=".$001"
+  >
+    Content
+  </List>
+</ul>
+`;

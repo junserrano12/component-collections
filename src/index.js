@@ -1,4 +1,5 @@
 import React from 'react'
+import Lists, {List} from './components/Lists/Lists'
 import Modal from './components/Modal/Modal'
 import useModal from './components/Modal/useModal'
 import useCustomStyle from './hooks/useCustomStyle'
@@ -14,6 +15,8 @@ const DwhCollections = (props) => {
 }
 
 export {
+    Lists,
+    List,
     Modal,
     useModal,
     useCustomStyle
